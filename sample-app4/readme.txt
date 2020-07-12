@@ -1,0 +1,1 @@
+Linking stylesheets, javascript files and serving images with Flask
