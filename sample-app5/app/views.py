@@ -32,9 +32,9 @@ def test():
     data['output'] = 'hello'
     my_resp = make_response(data)
     my_resp.headers['warning'] = 'warning'
-    my_resp.status_code = 546
+    my_resp.status_code = 546               # Custom status code
     my_resp.mimetype = 'application/json'
-    return my_resp, 200
+    return my_resp
 
 @app.route('/list1', methods=["GET"])
 def list_dir1():
