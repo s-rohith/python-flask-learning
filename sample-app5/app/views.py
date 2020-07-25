@@ -1,7 +1,6 @@
 from app import app
-from flask import Flask, make_response
-from flask import render_template
-import os, subprocess
+from flask import Flask, make_response, Response, render_template
+import os, subprocess, json
 
 def execute_command(cmd):
     pipe = subprocess.Popen(cmd, shell=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
@@ -9,10 +8,9 @@ def execute_command(cmd):
     if pipe.returncode == 0:
         return out, 200
     else:
-        resp = make_response({'Error': 500, 'Message': 'Failed to execute a command or script in the python code'})
-        resp.status_code = 500
-        return resp
-        
+        resp = {'Error': 500, 'Message': 'Failed to execute a command or script in the python code'}
+        return json.dumps(resp), 500
+
 @app.route('/', methods=["GET"])
 def index():
     return render_template('public/index.html')
@@ -38,12 +36,13 @@ def test():
 
 @app.route('/list1', methods=["GET"])
 def list_dir1():
-    return execute_command('ls')   
+    return execute_command('ls')
+
 
 @app.route('/list2', methods=["GET"])
 def list_dir2():
     return execute_command('ls p')   
-
+    
 
 # Error Handling
 @app.errorhandler(404)
