@@ -43,8 +43,3 @@ def list_dir1():
 def list_dir2():
     return execute_command('ls p')   
     
-
-# Error Handling
-@app.errorhandler(404)
-def not_found_exception(error):
-    return ({'Error': 404, 'Message': 'Requested URL not found'}), 404
