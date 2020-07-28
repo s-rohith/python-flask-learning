@@ -21,7 +21,7 @@ def qs():
     for k, v in args.items():
         print(f"{k}: {v}")
     
-    return "Query received!"
+    return "Query received!", 200
 
 @app.route("/query") # query using if statement
 def query_string():
@@ -34,4 +34,4 @@ def query_string():
 
     print(process_name, action_name)
     
-    return "Query received!"
+    return "Query received!", 200
