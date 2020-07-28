@@ -33,5 +33,4 @@ def query_string():
         action_name = args.get("action")
 
     print(process_name, action_name)
-    
     return "Query received!", 200
