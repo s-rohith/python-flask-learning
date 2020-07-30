@@ -14,10 +14,10 @@ def host_details():
 def out2json():
     host_name, host_ip = host_details()
     root = {}
-    root['Node_Name'] = host_name
-    root['Node_IP'] = host_ip
+    root['Host_Name'] = host_name
+    root['Host_IP'] = host_ip
     root = OrderedDict(root)
-    root.move_to_end('Node_Name', last=False)
+    root.move_to_end('Host_Name', last=False)
     try:
         output = json.dumps(root, indent=4)
         return output
